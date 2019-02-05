@@ -95,6 +95,7 @@ class SvgMask extends Component<Props, State> {
   }
 
   render() {
+    const pathFn = this.props.path || path;
     return (
       <View pointerEvents="box-none" style={this.props.style} onLayout={this.handleLayout}>
         {
@@ -106,7 +107,7 @@ class SvgMask extends Component<Props, State> {
                   fill={this.props.backdropColor}
                   fillRule="evenodd"
                   strokeWidth={1}
-                  d={path(this.state.size, this.state.position, this.state.canvasSize)}
+                  d={pathFn(this.state.size, this.state.position, this.state.canvasSize)}
                 />
               </Svg>
             )
