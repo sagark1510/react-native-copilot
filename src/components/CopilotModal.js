@@ -22,6 +22,7 @@ type Props = {
   stop: () => void,
   next: () => void,
   prev: () => void,
+  hide: () => void,
   currentStepNumber: number,
   currentStep: ?Step,
   visible: boolean,
@@ -241,6 +242,11 @@ class CopilotModal extends Component<Props, State> {
     this.props.stop();
   };
 
+  handleHide = () => {
+    this.reset();
+    this.props.hide();
+  };
+
   renderMask() {
     /* eslint-disable global-require */
     const MaskComponent =
@@ -299,6 +305,7 @@ class CopilotModal extends Component<Props, State> {
           handleNext={this.handleNext}
           handlePrev={this.handlePrev}
           handleStop={this.handleStop}
+          handleHide={this.handleHide}
         />
       </Animated.View>,
     ];
